@@ -17,7 +17,7 @@ The analysis helps bicycle riders of each area to do find out nearest bicycle wo
 ### Datasource1: Mobilithek
 * Metadata URL: https://mobilithek.info/offers/-8377471639463689219
 * Data URL: https://opendata.stadt-muenster.de/dataset/verkehrsz%C3%A4hlung-fahrradverkehr-daten-der-z%C3%A4hlstellen-m%C3%BCnster-josefsviertel/resource/dbd8be87
-* Data Type: CSV
+* Data Type: XLSX
 
 This dataset contains bike counting data for few years, both by the day and by the hour for the Josefsviertel.  Due to the volume of data, the counting points are divided by district. 
 
