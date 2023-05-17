@@ -26,7 +26,7 @@ This dataset contains bike counting data for few years, both by the day and by t
 * Data URL: https://geoserver.digitale-mrn.de/geoserver/metropolatlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=metropolatlas%3AMRN_OSM_shop_bycicle_repair_4326_Point&outputFormat=csv 
 * Data Type: CSV
 
-This dataset contains many bicyclwe workshops (where bicycle are sold, repaired, rents etc.) in different cities, countries with every possible details like phone number, zip code, address of the location.
+This dataset contains many bicycle workshops (where bicycle are sold, repaired, rents etc.) in different cities, countries with every possible details like phone number, zip code, address of the location.
 
 
 ## Work Packages
