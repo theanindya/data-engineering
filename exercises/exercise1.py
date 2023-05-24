@@ -19,4 +19,4 @@ columnTypes = {'column_1': Integer,
        }
 
 
-data.to_sql("airports", "sqlite:///./exercises/airports.sqlite", if_exists="replace",index=False)
+data.to_sql("airports", "sqlite:///airports.sqlite", if_exists="replace",index=False)
