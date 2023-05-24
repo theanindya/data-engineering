@@ -18,4 +18,5 @@ columnTypes = {'column_1': Integer,
        'geo_punkt': String 
        }
 
-data.to_sql('airports', 'sqlite:///airports.sqlite', if_exists='replace', index=False, dtype=columnTypes)
+
+data.to_sql("airports", "sqlite:///./exercises/airports.sqlite", if_exists="replace",index=False)
