@@ -5,7 +5,7 @@ database_file="dbanindya"
 
 # Check if the output file(s) exist
 if [ -f database_file ]; then
-    echo "Output file exists."
+    echo "Ya! Its there!!"
 else
-    echo "Output file does not exist."
+    echo "No database file!"
 fi
