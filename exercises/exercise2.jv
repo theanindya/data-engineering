@@ -1,3 +1,37 @@
+pipeline TrainsstopPipeline{
+
+    block DataExtractor oftype HttpExtractor {url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV"; }
+    block Trainstoptxtinterpreter oftype TextFileInterpreter {}
+    block trainstpinterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";";}
+
+    block DropColumn oftype ColumnDeleter{
+        delete: [column J];
+    }
+
+    block Trainsstptblinterpreter oftype TableInterpreter{
+        header: true;
+        columns: [
+            "IFOPT" oftype IFOPTType,
+            "DS100" oftype text,
+            "Breite" oftype GeographicType,
+            "NAME" oftype text,
+            "Betreiber_Name" oftype text,
+            "Laenge" oftype GeographicType,
+            "Verkehr" oftype VerkehrType,
+            "Betreiber_Nr" oftype integer,
+            "EVA_NR" oftype integer,
+        ];
+    }
+
+    block dbloader oftype SQLiteLoader { table: "trainstops"; file: "./trainstops.sqlite"; }
+
+    DataExtractor
+        ->Trainstoptxtinterpreter
+        ->trainstpinterpreter
+        ->DropColumn
+        ->Trainsstptblinterpreter
+        ->dbloader;
+
 valuetype VerkehrType oftype text{
     constraints: [VerkehrListe];
 }
@@ -25,37 +59,5 @@ constraint IFOPTRegEx oftype RegexConstraint {
     regex: /[a-z]{2}:\d+:\d+(:\d+)?/;
 }
 
-pipeline TrainsstopPipeline{
 
-    block DataExtractor oftype HttpExtractor {url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV"; }
-    block TrainsstopTextFileInterpreter oftype TextFileInterpreter {}
-    block TrainsstopCSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";";}
-
-    block DropColumn oftype ColumnDeleter{
-        delete: [column J];
-    }
-
-    block TrainsstopTableInterpreter oftype TableInterpreter{
-        header: true;
-        columns: [
-            "EVA_NR" oftype integer,
-            "DS100" oftype text,
-            "IFOPT" oftype IFOPTType,
-            "NAME" oftype text,
-            "Verkehr" oftype VerkehrType,
-            "Laenge" oftype GeographicType,
-            "Breite" oftype GeographicType,
-            "Betreiber_Name" oftype text,
-            "Betreiber_Nr" oftype integer,
-        ];
-    }
-
-    block DatabaseLoader oftype SQLiteLoader { table: "trainstops"; file: "./trainstops.sqlite"; }
-
-    DataExtractor
-        ->TrainsstopTextFileInterpreter
-        ->TrainsstopCSVInterpreter
-        ->DropColumn
-        ->TrainsstopTableInterpreter
-        ->DatabaseLoader;
 }
