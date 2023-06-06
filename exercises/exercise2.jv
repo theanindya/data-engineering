@@ -52,10 +52,10 @@ constraint Geographic oftype RangeConstraint{
 }
 
 valuetype IFOPTType oftype text{
-    constraints: [IFOPTRegEx];
+    constraints: [IFOPTreg];
 }
 
-constraint IFOPTRegEx oftype RegexConstraint {
+constraint IFOPTreg oftype RegexConstraint {
     regex: /[a-z]{2}:\d+:\d+(:\d+)?(:\d+)?/;
 }
 
