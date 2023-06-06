@@ -22,15 +22,14 @@ valuetype IFOPTType oftype text{
 }
 
 constraint IFOPTRegEx oftype RegexConstraint {
-    regex: /[a-z]{2}:\d+:\d+(:\d+)?(:\d+)?/;
+    regex: /[a-z]{2}:\d+:\d+(:\d+)?/;
 }
 
 pipeline TrainsstopPipeline{
 
     block DataExtractor oftype HttpExtractor {url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV"; }
-    block TrainsstopCSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";";}
     block TrainsstopTextFileInterpreter oftype TextFileInterpreter {}
-    
+    block TrainsstopCSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";";}
 
     block DropColumn oftype ColumnDeleter{
         delete: [column J];
@@ -39,27 +38,24 @@ pipeline TrainsstopPipeline{
     block TrainsstopTableInterpreter oftype TableInterpreter{
         header: true;
         columns: [
-        
-            
-            "Breite" oftype GeographicType,
-            "NAME" oftype text,
-            "Betreiber_Nr" oftype integer,
-            "Betreiber_Name" oftype text,
-            "Verkehr" oftype VerkehrType,
             "EVA_NR" oftype integer,
-            "Laenge" oftype GeographicType,
             "DS100" oftype text,
             "IFOPT" oftype IFOPTType,
-            
+            "NAME" oftype text,
+            "Verkehr" oftype VerkehrType,
+            "Laenge" oftype GeographicType,
+            "Breite" oftype GeographicType,
+            "Betreiber_Name" oftype text,
+            "Betreiber_Nr" oftype integer,
         ];
     }
 
     block DatabaseLoader oftype SQLiteLoader { table: "trainstops"; file: "./trainstops.sqlite"; }
 
     DataExtractor
-        ->DropColumn
-        ->TrainsstopCSVInterpreter
         ->TrainsstopTextFileInterpreter
-        ->DatabaseLoader;
+        ->TrainsstopCSVInterpreter
+        ->DropColumn
         ->TrainsstopTableInterpreter
+        ->DatabaseLoader;
 }
