@@ -21,6 +21,6 @@ jobs:
     # Run Continuous Integration
     - name: CI Test
       run: |
-        ./project/tests.sh
+        ./data-engineering/tests.sh
 
   
