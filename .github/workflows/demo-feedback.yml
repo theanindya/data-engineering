@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-    - data-engineering/**
+    - 'data-engineering/**'
 
 jobs:
   CI_Implementation:
