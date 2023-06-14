@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-    - project/**
+    - data-engineering/**
 
 jobs:
   CI_Implementation:
@@ -21,6 +21,6 @@ jobs:
     # Run Continuous Integration
     - name: CI Test
       run: |
-        ../project/tests.sh
+        ./project/tests.sh
 
   
