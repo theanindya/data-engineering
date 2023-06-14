@@ -26,7 +26,7 @@ jobs:
     - name: CI Test
       run: |
        chmod u+r+x ./main/project/tests.sh
-       cd ./main/project
+       cd ./main/data
        ./tests.sh
       
 
