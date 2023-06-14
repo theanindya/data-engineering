@@ -22,7 +22,12 @@ jobs:
       with:
         python-version: 3.11
 
-    # Run Continuous Integration
+  # Run Continuous Integration
     - name: CI Test
       run: |
-        ./data-engineering/tests.sh
+       chmod u+r+x ./main/project/test.sh
+       cd ./main/project
+       ./test.sh
+      
+
+        
