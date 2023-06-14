@@ -1,4 +1,4 @@
-name: Exercise Feedback
+name: demo-feedback
 
 on:
   push:
