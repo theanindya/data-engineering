@@ -25,7 +25,7 @@ jobs:
   # Run Continuous Integration
     - name: CI Test
       run: |
-       chmod u+r+x ./main/project/test.sh
+       chmod u+r+x ./main/project/tests.sh
        cd ./main/project
        ./tests.sh
       
