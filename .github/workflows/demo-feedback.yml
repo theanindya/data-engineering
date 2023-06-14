@@ -8,7 +8,7 @@ on:
     - project/**
 
 jobs:
-  project-feedback/CI Implementation:
+  CI_Implementation:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
