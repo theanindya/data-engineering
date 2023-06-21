@@ -3,7 +3,7 @@ import pandas as pd
 db = 'https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv'
 column_names = ['date', 'CIN', 'name', 'petrol', 'diesel', 'gas', 'electro', 'hybrid', 'plugInHybrid', 'others']
 
-df = pd.read_csv(db, sep=';', encoding='ISO-8859-1', skiprows=range(1, 8), skipfooter=4,
+df = pd.read_csv(db, sep=';', encoding='ISO-8859-1', header=None, skiprows=range(1, 8), skipfooter=4,
                  usecols=[0, 1, 2, 12, 22, 32, 42, 52, 62, 72], names=column_names, engine='python',
                  converters={'CIN': str})
 
