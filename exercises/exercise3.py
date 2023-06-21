@@ -4,9 +4,7 @@ db = 'https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.
 column_names = ['date', 'CIN', 'name', 'petrol', 'diesel', 'gas', 'electro', 'hybrid', 'plugInHybrid', 'others']
 
 df = pd.read_csv(db, sep=';', encoding='ISO-8859-1', header=None, skiprows=range(0, 7), skipfooter=4,
-                 usecols=[0, 1, 2, 12, 22, 32, 42, 52, 62, 72], names=column_names, engine='python',
-                 na_values='.', thousands=',',
-                 dtype={'CIN': str})
+                 usecols=[0, 1, 2, 12, 22, 32, 42, 52, 62, 72], names=column_names, engine='python', na_values='.', thousands=',',dtype={'CIN': str})
 
 df = df[df["petrol"].str.contains("-")==False]
 
