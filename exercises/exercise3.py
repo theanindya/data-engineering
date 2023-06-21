@@ -16,5 +16,3 @@ df.to_sql('cars', 'sqlite:///cars.sqlite', if_exists='replace', index=False)
 
 
 
-
-
