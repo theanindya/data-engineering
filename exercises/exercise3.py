@@ -8,6 +8,7 @@ df = pd.read_csv(db, sep=';', encoding='ISO-8859-1', header=None, skiprows=7, sk
                  converters={'CIN': str})
 
 df = df[df["petrol"].str.contains("-")==False]
+df = df.dropna()
 df = df.astype({'petrol':'int64', 'diesel':'int64', 'gas':'int64', 'electro':'int64', 'hybrid':'int64', 'plugInHybrid':'int64', 'others':'int64'})
 
 
