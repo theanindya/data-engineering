@@ -10,7 +10,7 @@ df = pd.read_csv(db, sep=';', encoding='ISO-8859-1', header=None, skiprows=6, sk
 df = df[df["petrol"].str.contains("-")==False]
 df = df[df['CIN'].str.contains(r'^\d{5}$', regex=True)]
 
- df = df.dropna()
+df = df.dropna()
 x = df.iloc[:, 3:].gt(0).any(axis=1)
 df = df[x]
 
