@@ -8,7 +8,7 @@ d1 = pd.read_excel("F:/Anindya/FAU/AMSE/Zaehlstelle_Hammer_Strasse_Tagesauswertu
 
 #2nd data source
 
-d2 = pd.read_excel("F:/Anindya/FAU/AMSE/MRN_OSM_shop_bycicle_repair_4326_Point.csv") # data collected from  https://geoserver.digitale-mrn.de/geoserver/metropolatlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=metropolatlas%3AMRN_OSM_shop_bycicle_repair_4326_Point&outputFormat=csv
+d2 = pd.read_csv("F:/Anindya/FAU/AMSE/MRN_OSM_shop_bycicle_repair_4326_Point.csv") # data collected from  https://geoserver.digitale-mrn.de/geoserver/metropolatlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=metropolatlas%3AMRN_OSM_shop_bycicle_repair_4326_Point&outputFormat=csv
 
 
 conn = sqlite3.connect("data/dbanindya.sqlite")
