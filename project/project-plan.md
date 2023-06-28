@@ -34,9 +34,9 @@ This dataset contains many bicycle workshops (where bicycle are sold, repaired, 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Extract data from the databases
-2. analize the dataset
-3. create graph
-4. calculate and find the similarities between two datasets
+2. Analyze the dataset
+3. Findings
+4. create graph
 5. Draw conclusion
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
