@@ -2,7 +2,7 @@
 
 ## Summary
 
-This project aims to to examine the average number of bikes used in different areas and the need of new bicycle workshops based on number of bikes are used in each area. we have bicycle riders data for each district in each hour and each day and in a different dataset of bicycle workshops where only bicycle are repaired or where both repaired, sold and rental offers. Furthermore, we have the dataset of the detailed address of the workshops (like phone number, zipcode etc.) of the bicycle workshop.
+This project aims to to examine the average number of bikes used in different areas and the need of new bicycle workshops based on number of bikes used in each area. we have bicycle riders data for each district in each hour and each day and in a different dataset of bicycle workshops where only bicycle are repaired or where both repaired, sold and rental offers. Furthermore, we have the dataset of the detailed address of the workshops (like phone number, zipcode etc.) of the bicycle workshop.
 
 
 ## Rationale
