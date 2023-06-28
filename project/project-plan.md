@@ -8,7 +8,7 @@ This project aims to to examine the average number of bikes used in different ar
 ## Rationale
 
 
-The analysis helps bicycle riders of each area to do find out nearest bicycle workshops in normal time as well as in emergency.
+The analysis helps insights into the bike usage patterns across different areas. This analysis also helps to identify areas with higher bike usage, which could potentially indicate a higher demand for bicycle-related services like: bike workshops.
 
 ## Datasources
 
