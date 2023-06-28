@@ -36,7 +36,7 @@ This dataset contains many bicycle workshops (where bicycle are sold, repaired, 
 1. Extract data from the databases
 2. Analyze the dataset
 3. Findings
-4. create graph
+4. Create graph
 5. Draw conclusion
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
