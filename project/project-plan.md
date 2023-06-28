@@ -19,7 +19,7 @@ The analysis helps bicycle riders of each area to do find out nearest bicycle wo
 * Data URL: https://opendata.stadt-muenster.de/dataset/verkehrsz%C3%A4hlung-fahrradverkehr-daten-der-z%C3%A4hlstellen-m%C3%BCnster-josefsviertel/resource/dbd8be87
 * Data Type: XLSX
 
-This dataset contains bike counting data for few years, both by the day and by the hour for the Josefsviertel.  Due to the volume of data, the counting points are divided by district. 
+This dataset contains bike counting data for few years, both by the day and by the hour for Münster city.  Due to the volume of data, the counting points are divided by district. 
 
 ### Datasource2: GovData
 * Metadata URL: https://www.govdata.de/web/guest/suchen/-/details/fahrradwerkstatten
