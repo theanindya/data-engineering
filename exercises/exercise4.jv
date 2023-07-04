@@ -25,10 +25,17 @@ pipeline temppipeline{
             "Geraet aktiv" oftype text
         ];
     }
-block TemperTransformer oftype TableTransformer {
-      inputColumn: 'Temperatur in °C (DWD)';
-      outputColumn: 'Temperatur';
-      use: CelciusToFahrenheit;
+
+ block CelsiusToFahrenheitTTransformer oftype TableTransformer {
+        inputColumn: 'Temperatur';
+        outputColumn: 'Temperatur';
+        use: CelsiusToFahrenheit;
+    }
+
+    block CelsiusToFahrenheitBTTransformer oftype TableTransformer {
+        inputColumn: 'Batterietemperatur';
+        outputColumn: 'Batterietemperatur';
+        use: CelsiusToFahrenheit;
     }
 block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite"; }
  DataExtractor
@@ -39,6 +46,7 @@ block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "./temper
     ->DataFilePicker
     ->FGHIColumnDeleter
     ->DataTableInterpreter
-    ->TemperTransformer
+    ->CelsiusToFahrenheitTTransformer
+    ->CelsiusToFahrenheitBTTransformer
     ->DatasetLoader;
 }
