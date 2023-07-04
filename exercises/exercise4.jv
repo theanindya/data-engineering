@@ -6,14 +6,14 @@ transform CelsiusToFahrenheit {
 }
 
 pipeline temppipeline {
-  block FileExtractor oftype HttpExtractor {url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip"; }
+  block FileExtractor oftype HttpExtractor { url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip"; }
+  block ArchiveInterpreter oftype ArchiveInterpreter { archiveType: "zip"; }
   block TextFileInterpreter oftype TextFileInterpreter {}
-  block ZipArchiveInterpreter oftype ArchiveInterpreter { archiveType: "zip";}  
-  block ColumnDataSelector oftype CellRangeSelector {select: range A1:K*;}
-  block FileCSVInterpreter oftype CSVInterpreter {enclosing: '"'; delimiter: ";";}
-  block DataFilePicker oftype FilePicker { path: "/data.csv";}
-  block FGHIColumnDeleter oftype ColumnDeleter { delete: [column F,column G,column H,column I]; }
-  block DataTableInterpreter oftype TableInterpreter {
+  block CellRangeSelector oftype CellRangeSelector { select: "A1:K*"; }
+  block CSVInterpreter oftype CSVInterpreter { enclosing: '"'; delimiter: ";"; }
+  block FilePicker oftype FilePicker { path: "/data.csv"; }
+  block ColumnDeleter oftype ColumnDeleter { delete: ["F", "G", "H", "I"]; }
+  block TableInterpreter oftype TableInterpreter {
     header: false;
     columns: [
       "Geraet" oftype integer,
@@ -25,30 +25,22 @@ pipeline temppipeline {
       "Geraet aktiv" oftype text
     ];
   }
-
-  block CelsiusToFahrenheitTTransformer oftype TableTransformer {
+  block TableTransformer oftype TableTransformer {
     inputColumn: 'Temperatur';
     outputColumn: 'Temperatur';
     use: CelsiusToFahrenheit;
   }
+  block SQLiteLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite"; }
 
-  block CelsiusToFahrenheitBTTransformer oftype TableTransformer {
-    inputColumn: 'Batterietemperatur';
-    outputColumn: 'Batterietemperatur';
-    use: CelsiusToFahrenheit;
-  }
-
-  block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite";}
-
-  DataExtractor
+  FileExtractor
+    ->ArchiveInterpreter
     ->TextFileInterpreter
-    ->ZipArchiveInterpreter
-    ->ColumnDataSelector
-    ->FileCSVInterpreter
-    ->DataFilePicker
-    ->FGHIColumnDeleter
-    ->DataTableInterpreter
-    ->CelsiusToFahrenheitTTransformer
-    ->CelsiusToFahrenheitBTTransformer
-    ->DatasetLoader;
+    ->CellRangeSelector
+    ->CSVInterpreter
+    ->FilePicker
+    ->ColumnDeleter
+    ->TableInterpreter
+    ->TableTransformer
+    ->TableTransformer
+    ->SQLiteLoader;
 }
