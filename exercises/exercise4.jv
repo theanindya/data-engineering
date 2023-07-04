@@ -28,7 +28,7 @@ pipeline temppipeline{
 block TemperTransformer oftype TableTransformer {
       inputColumn: 'Temperatur in °C (DWD)';
       outputColumn: 'Temperatur';
-      use: CelciusToFahrenheit
+      use: CelciusToFahrenheit;
     }
 block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite"; }
  DataExtractor
