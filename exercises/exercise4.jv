@@ -30,7 +30,7 @@ block TemperTransformer oftype TableTransformer {
       outputColumn: 'Temperatur';
       use: CelciusToFahrenheit
     }
-block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "temperatures.sqlite"; }
+block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite"; }
  DataExtractor
     ->TextFileInterpreter
     ->ZipArchiveInterpreter
