@@ -42,11 +42,11 @@ pipeline TempPipeline{
 }
 
     FileExtractor
-    ->TextFileInterpreter
-    ->ZipArchiveInterpreter
-    ->ColumnDataSelector
-    ->FileCSVInterpreter
+    ->ZipArchiveInterpreter            
     ->DataFilePicker
+    ->TextFileInterpreter         
+    ->FileCSVInterpreter
+    ->ColumnDataSelector           
     ->FGHIColumnDeleter
     ->DataTableInterpreter
     ->CelsiusToFahrenheitTTransformer
