@@ -37,8 +37,11 @@ pipeline temppipeline{
         outputColumn: 'Batterietemperatur';
         use: CelsiusToFahrenheit;
     }
-block DatasetLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite";}
- DataExtractor
+    block DatasetLoader oftype SQLiteLoader {
+        table: "temperatures"; file: "./temperatures.sqlite";
+    }
+
+    DataExtractor
     ->TextFileInterpreter
     ->ZipArchiveInterpreter
     ->ColumnDataSelector
