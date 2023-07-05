@@ -41,7 +41,7 @@ pipeline temppipeline{
         table: "temperatures"; file: "./temperatures.sqlite";
 }
 
-    DataExtractor
+    FileExtractor
     ->TextFileInterpreter
     ->ZipArchiveInterpreter
     ->ColumnDataSelector
