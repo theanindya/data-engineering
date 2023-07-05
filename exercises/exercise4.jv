@@ -5,7 +5,7 @@ transform CelsiusToFahrenheit {
   tempFahrenheit: (tempCelsius * 9/5) + 32;
 }
 
-pipeline temppipeline{
+pipeline Temppipeline{
     block FileExtractor oftype HttpExtractor {url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip"; }
     block TextFileInterpreter oftype TextFileInterpreter {}
     block ZipArchiveInterpreter oftype ArchiveInterpreter { archiveType: "zip";}  
