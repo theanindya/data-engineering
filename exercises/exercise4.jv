@@ -39,7 +39,7 @@ pipeline temppipeline{
     }
     block DatasetLoader oftype SQLiteLoader {
         table: "temperatures"; file: "./temperatures.sqlite";
-    }
+}
 
     DataExtractor
     ->TextFileInterpreter
@@ -52,4 +52,5 @@ pipeline temppipeline{
     ->CelsiusToFahrenheitTTransformer
     ->CelsiusToFahrenheitBTTransformer
     ->DatasetLoader;
-}
+}    
+
